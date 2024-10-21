@@ -1,0 +1,12 @@
+.bg-custom{
+    background-color: #ff7d1b;
+}
+
+button{
+    background-color: #ff7d1b !important;
+}
+.cart{
+    position: fixed;
+    top: 70px;
+    right: 130px;
+}
