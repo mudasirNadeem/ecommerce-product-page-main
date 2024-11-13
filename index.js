@@ -2,6 +2,11 @@ var itemValue = document.getElementById('item-value');
 var notification = document.getElementById('notification');
 var cart = document.getElementById('cart');
 notification.innerText = itemValue.value;
+var pappupImage = document.querySelectorAll('.thumbnail-image');
+var minItems2 = document.getElementById('min-product2');
+var minItems = document.getElementById('min-item');
+imageIndex();
+ecormance();
 function increaseItemsValue(){
 itemValue.value++;
 notification.innerText = itemValue.value;
@@ -24,3 +29,61 @@ notification.innerText = itemValue.value
         cart.classList.add('d-none')
     }
  }
+ 
+function imageIndex(){
+    var getImage = document.querySelectorAll('.thumbnail-img');
+    var index = 0;
+    
+    getImage.forEach(item => {
+        var idIndex = index;
+        index++;
+        item.setAttribute('id', idIndex); 
+        item.addEventListener('click', function() {
+            imagePapop(idIndex);
+        });
+    });
+}
+
+function imagePapop(id) {
+    var getID = document.getElementById(id);
+    var showOverlay = document.getElementsByClassName('overlay')[0];
+    var showOverlayColor = document.getElementsByClassName('overlay-color')[0];
+    
+    showOverlayColor.addEventListener('click' , function(){
+        showOverlay.classList.add('d-none');
+        showOverlayColor.classList.add('d-none');
+    });
+  
+    if(showOverlay.classList.contains('d-none')){
+        showOverlay.classList.remove('d-none');
+        showOverlayColor.classList.remove('d-none');
+        minItems.src = getID.currentSrc;
+        minItems2.src = getID.currentSrc;
+    }
+    
+}
+function ecormance(){
+var index = 0;
+pappupImage.forEach(items =>{
+    var idIndex = index;
+    index++;
+    items.setAttribute('id', `p-e-${idIndex}`);
+    items.addEventListener('click' , function(){
+        itemsFun(idIndex);
+    });
+   
+});
+}
+function itemsFun(idIndex){
+    var pEIndex = document.getElementById(idIndex);
+    minItems.src = pEIndex.currentSrc;
+    minItems2.src = pEIndex.currentSrc;
+}
+function next(){
+    var index = 0;
+    index++;
+    var idindex = document.getElementById(`p-e-${index}`);
+    minItems.src = idindex.currentSrc;
+
+}
+
