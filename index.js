@@ -5,6 +5,7 @@ notification.innerText = itemValue.value;
 var pappupImage = document.querySelectorAll('.thumbnail-image');
 var minItems2 = document.getElementById('min-product2');
 var minItems = document.getElementById('min-item');
+var currentIndex = 0; // Keeps track of the current image index
 imageIndex();
 ecormance();
 function increaseItemsValue(){
@@ -77,13 +78,22 @@ pappupImage.forEach(items =>{
 function itemsFun(idIndex){
     var pEIndex = document.getElementById(idIndex);
     minItems.src = pEIndex.currentSrc;
-    minItems2.src = pEIndex.currentSrc;
 }
-function next(){
-    var index = 0;
-    index++;
-    var idindex = document.getElementById(`p-e-${index}`);
-    minItems.src = idindex.currentSrc;
-
+function next() {
+    //   currentIndex = (currentIndex + 1) % pappupImage.length;
+    if(currentIndex == pappupImage.length -1 ){
+        currentIndex = 0;
+        var nextImage = document.getElementById(`p-e-${currentIndex}` );
+        minItems.src = nextImage.currentSrc;
+    }
+    else{
+        currentIndex = (currentIndex + 1);
+        var nextImage = document.getElementById(`p-e-${currentIndex}` );
+        minItems.src = nextImage.currentSrc;
+    }
 }
-
+function previous(){
+    currentIndex = (currentIndex - 1 + pappupImage.length) % pappupImage.length;
+    var previousImage = document.getElementById(`p-e-${currentIndex}`);
+        minItems.src = previousImage.currentSrc;
+}
