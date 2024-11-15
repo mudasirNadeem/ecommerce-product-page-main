@@ -1,10 +1,12 @@
 var itemValue = document.getElementById('item-value');
+var itemsQuantity = document.getElementById('qunatity')
 var notification = document.getElementById('notification');
 var cart = document.getElementById('cart');
 notification.innerText = itemValue.value;
 var pappupImage = document.querySelectorAll('.thumbnail-image');
 var minItems2 = document.getElementById('min-product2');
 var minItems = document.getElementById('min-item');
+var cartNoData = document.getElementById('cart-no-data');
 var currentIndex = 0; // Keeps track of the current image index
 imageIndex();
 ecormance();
@@ -19,15 +21,30 @@ function decreaseItemsValue(){
 else{
     alert('the value is not less than 0')
 }
-notification.innerText = itemValue.value
+notification.innerText = itemValue.value;
 }
 
  function notificationList(){
-    if(cart.classList.contains('d-none')){
-        cart.classList.remove('d-none')
+    var cartTotal = document.getElementById('cart-total');
+     if(parseInt(itemValue.value)){
+        itemsQuantity.innerText =  itemValue.value;
+        var totalRupes = parseInt(125 * itemsQuantity.innerText);
+        cartTotal.innerText =  totalRupes + ".00";
+        if(cart.classList.contains('d-none')){
+            cart.classList.remove('d-none');
+        }
+        else{
+            cart.classList.add('d-none');
+        }
     }
     else{
-        cart.classList.add('d-none')
+        cart.classList.add('d-none');
+        if(cartNoData.classList.contains('d-none')){
+            cartNoData.classList.remove('d-none');
+        }
+        else{
+            cartNoData.classList.add('d-none');
+        }
     }
  }
  

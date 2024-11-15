@@ -86,7 +86,7 @@
                 <img src="images/image-product-1-thumbnail.jpg" alt="Product Image" class="rounded" width="50" height="50">
                 <div class="cart-item-details ms-2">
                     <h6>Fall Limited Edition Sneakers</h6>
-                    <p class="mb-0">$125.00 x 3 <span class="cart-total">$375.00</span></p>
+                    <p class="mb-0">$125.00 x <span id="qunatity">3</span><span> = </span> <span>$</span><span id="cart-total">$375.00</span></p>
                 </div>
             </div>
             <div class="ms-3">
@@ -97,6 +97,19 @@
             </div>
             <button class="btn checkout-btn w-100 py-2">Checkout</button>
         </div>
+
+</div>
+
+<div class="card cart d-none" id="cart-no-data">
+    <div class="card-header bg-transparent d-flex justify-content-between">
+        <b>Cart</b>
+        <button class="border-0  bg-transparent" onclick="notificationList()">
+            <img src="images/icon-close.svg" alt="">
+        </button>
+    </div>
+    <div class="card-body ">
+        <p class="mb-0 px-3" >You Have not Items</p>
+    </div>
 
 </div>
 <div class="overlay d-none">
