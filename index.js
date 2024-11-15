@@ -93,7 +93,15 @@ function next() {
     }
 }
 function previous(){
-    currentIndex = (currentIndex - 1 + pappupImage.length) % pappupImage.length;
-    var previousImage = document.getElementById(`p-e-${currentIndex}`);
-        minItems.src = previousImage.currentSrc;
+    // currentIndex = (currentIndex - 1 + pappupImage.length) % pappupImage.length;
+    if(currentIndex == 0 ){
+        currentIndex = pappupImage.length -1;
+            var previousImage = document.getElementById(`p-e-${currentIndex}`);
+            minItems.src = previousImage.currentSrc;
+    }
+    else{
+        currentIndex = (currentIndex - 1);
+        var previousImage = document.getElementById(`p-e-${currentIndex}`);
+        minItems.src = previousImage.currentSrc; 
+    }
 }
