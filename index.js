@@ -12,6 +12,7 @@ var showOverlayColor = document.getElementsByClassName('overlay-color')[0];
 var deleteItems = document.getElementById('delete-Items');
 var items = document.getElementById('items');
 var noItems = document.getElementById('noItems');
+var checkOut = document.getElementById('checkout');
 imageIndex();
 ecormance();
 function increaseItemsValue(){
@@ -41,7 +42,7 @@ function cartValue(){
             cart.classList.remove('d-none');
             showOverlayColor.classList.remove('d-none');
             noItems.classList.add('d-none');
-
+            checkOut.classList.remove('d-none');
         }
         else{
             cart.classList.add('d-none');
@@ -143,4 +144,5 @@ function handleDeleteItems() {
     items.classList.add('d-none');
     noItems.classList.remove('d-none');
     notification.innerText = "0";
+    checkOut.classList.add('d-none');
 }
