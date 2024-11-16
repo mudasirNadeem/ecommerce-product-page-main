@@ -142,5 +142,5 @@ function previous(){
 function handleDeleteItems() {
     items.classList.add('d-none');
     noItems.classList.remove('d-none');
-    notification.innerText = "0"
+    notification.innerText = "0";
 }
