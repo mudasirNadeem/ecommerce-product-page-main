@@ -8,11 +8,14 @@ var minItems2 = document.getElementById('min-product2');
 var minItems = document.getElementById('min-item');
 var cartNoData = document.getElementById('cart-no-data');
 var currentIndex = 0; // Keeps track of the current image index
+var showOverlayColor = document.getElementsByClassName('overlay-color')[0];
+var deleteItems = document.getElementById('delete-Items');
+var items = document.getElementById('items');
+var noItems = document.getElementById('noItems');
 imageIndex();
 ecormance();
 function increaseItemsValue(){
 itemValue.value++;
-notification.innerText = itemValue.value;
 }
 function decreaseItemsValue(){
     if(parseInt(itemValue.value) > 0){
@@ -21,29 +24,45 @@ function decreaseItemsValue(){
 else{
     alert('the value is not less than 0')
 }
-notification.innerText = itemValue.value;
 }
-
+function cartValue(){
+    notification.innerText = itemValue.value;
+    if(items.classList.contains('d-none')){
+        items.classList.remove('d-none');
+    }
+}
  function notificationList(){
     var cartTotal = document.getElementById('cart-total');
-     if(parseInt(itemValue.value)){
-        itemsQuantity.innerText =  itemValue.value;
+     if(parseInt(notification.innerText)){
+        itemsQuantity.innerText =  notification.innerText;
         var totalRupes = parseInt(125 * itemsQuantity.innerText);
         cartTotal.innerText =  totalRupes + ".00";
         if(cart.classList.contains('d-none')){
             cart.classList.remove('d-none');
+            showOverlayColor.classList.remove('d-none');
+            noItems.classList.add('d-none');
+
         }
         else{
             cart.classList.add('d-none');
+            showOverlayColor.classList.add('d-none');
         }
     }
     else{
         cart.classList.add('d-none');
         if(cartNoData.classList.contains('d-none')){
-            cartNoData.classList.remove('d-none');
+            if(showOverlayColor.classList.contains('d-none')){
+                showOverlayColor.classList.remove('d-none');
+                cartNoData.classList.remove('d-none');
+            }
+            else{
+                cartNoData.classList.add('d-none');
+                showOverlayColor.classList.add('d-none');
+            }
         }
         else{
             cartNoData.classList.add('d-none');
+            showOverlayColor.classList.add('d-none');
         }
     }
  }
@@ -65,8 +84,6 @@ function imageIndex(){
 function imagePapop(id) {
     var getID = document.getElementById(id);
     var showOverlay = document.getElementsByClassName('overlay')[0];
-    var showOverlayColor = document.getElementsByClassName('overlay-color')[0];
-    
     showOverlayColor.addEventListener('click' , function(){
         showOverlay.classList.add('d-none');
         showOverlayColor.classList.add('d-none');
@@ -121,4 +138,9 @@ function previous(){
         var previousImage = document.getElementById(`p-e-${currentIndex}`);
         minItems.src = previousImage.currentSrc; 
     }
+}
+function handleDeleteItems() {
+    items.classList.add('d-none');
+    noItems.classList.remove('d-none');
+    notification.innerText = "0"
 }
